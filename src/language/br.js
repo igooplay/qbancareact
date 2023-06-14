@@ -794,12 +794,12 @@ satisfied: "satisfeito",
 "some Customer & Restaurant Owners": "alguns Clientes e Proprietários de Restaurantes",
 "Become A Seller": "Torne-se um Vendedor",
 "Register as seller and open shop in 6amMart to start your business":
-"Cadastre-se como vendedor e abra uma loja no 6amMart para iniciar seu negócio",
+"Cadastre-se como vendedor e abra uma loja Qbanca para iniciar seu negócio",
 "Become A Deliveryman": "Torne-se um Entregador",
-  "to start your business": "to start your business",
-  "Register as seller and open shop in": "Register as seller and open shop in",
+  "to start your business": "para começar seu negócio",
+  "Register as seller and open shop in": "Cadastre-se como vendedor e abra a loja em",
   "Register as delivery man and earn money":
-    "Register as delivery man and earn money",
+    "Cadastre-se como entregador e ganhe dinheiro",
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit.":
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
  
