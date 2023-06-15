@@ -444,7 +444,7 @@ Update: "Atualizar",
 "Terms & Conditions": "Termos e Condições",
 "Privacy Policy": "Política de Privacidade",
 "Quick Links": "Links Rápidos",
-"Contact Us": "Entre em Contato",
+"Contact us": "Entre em Contato",
 "About Us": "Sobre Nós",
 " Loyalty Points": " Pontos de Fidelidade",
 "Only for First Order": "Apenas para o Primeiro Pedido",
@@ -843,5 +843,5 @@ Included: "Incluído",
 "Eu concordo que fazer o pedido me coloca sob",
 "Terms and Conditions": "Termos e Condições",
 "Join our online marketplace revolution and boost your income.":
-"Junte-se à nossa revolução de mercado online e aumente sua renda."
+"Junte-se à nos e revolucione a sua maneira de fazer negócios online ainda hoje e aumente sua renda."
 };
