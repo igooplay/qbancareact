@@ -123,6 +123,7 @@ const ItemCheckout = (props) => {
     ["get-distance", storeData, address],
     () => GoogleApi.distanceApi(storeData, address),
     {
+      enabled:false,
       onError: onErrorResponse,
     }
   );
@@ -437,7 +438,6 @@ const ItemCheckout = (props) => {
     toast.error(
       t(`${getStoresOrRestaurants().slice(0, -1)} is closed. Try again later.`)
     );
-  //totalAmount
   const handlePlaceOrderBasedOnAvailability = () => {
     //cod -> cash on delivery
     const codLimit =
@@ -584,6 +584,7 @@ const ItemCheckout = (props) => {
                   extraCharge={extraCharge && extraCharge}
                   setDeliveryFee={setDeliveryFee}
                   extraChargeLoading={extraChargeLoading}
+                  deliveryFee={deliveryFee}
                 />
               ) : (
                 extraChargeLoading && <OrderCalculationShimmer />

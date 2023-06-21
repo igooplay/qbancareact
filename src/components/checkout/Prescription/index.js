@@ -79,6 +79,7 @@ const PrescriptionCheckout = ({ storeId }) => {
     ["get-distance", storeData, address],
     () => GoogleApi.distanceApi(storeData, address),
     {
+      enabled:false,
       onError: onErrorResponse,
     }
   );

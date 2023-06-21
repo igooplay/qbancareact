@@ -9,11 +9,18 @@ const MetaData = ({
   ogType,
   pathName,
 }) => {
+    const getPageTitle = () => {
+        if(title){
+            return title
+        }
+        else{
+            return 'Loading...'
+        }
+    };
   return (
     <Head>
-      <title>{title}</title>
+      <title>{getPageTitle()}</title>
       {/*<meta name="description" content={description} />*/}
-
       {/*<!-- Google / Search Engine Tags -->*/}
       <meta itemProp="name" content={title} />
       <meta itemProp="description" content={description} />

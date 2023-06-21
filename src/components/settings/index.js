@@ -4,7 +4,7 @@ import { CustomStackFullWidth } from "../../styled-components/CustomStyles.style
 import { Grid, Paper, styled, Typography } from "@mui/material";
 import ThemeSwitches from "../header/top-navbar/ThemeSwitches";
 import { Stack } from "@mui/system";
-import CustomLanguage from "../header/top-navbar/CustomLanguage";
+import CustomLanguage from "../header/top-navbar/language/CustomLanguage";
 
 const CustomPaper = styled(Paper)(({ theme }) => ({
   borderRadius: "10px",

@@ -841,4 +841,6 @@ export const english = {
   "Terms and Conditions": "Terms and Conditions",
   "Join our online marketplace revolution and boost your income.":
     "Join our online marketplace revolution and boost your income.",
+  'Loading...':'Loading...',
+  "Language has been changed.":"Language has been changed.",
 };

@@ -843,5 +843,7 @@ Included: "Incluído",
 "Eu concordo que fazer o pedido me coloca sob",
 "Terms and Conditions": "Termos e Condições",
 "Join our online marketplace revolution and boost your income.":
-"Junte-se à nos e revolucione a sua maneira de fazer negócios online ainda hoje e aumente sua renda."
+"Junte-se à nos e revolucione a sua maneira de fazer negócios online ainda hoje e aumente sua renda.",
+'Loading...':'Carregando...',
+"Language has been changed.":"O idioma foi alterado.",
 };

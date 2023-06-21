@@ -762,4 +762,6 @@ export const arabic = {
   "Terms and Conditions": "الأحكام والشروط",
   "Join our online marketplace revolution and boost your income.":
     "انضم إلى ثورة سوقنا على الإنترنت وعزز دخلك.",
+  'Loading...':'تحميل...',
+  "Language has been changed.":"تم تغيير اللغة.",
 };

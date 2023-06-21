@@ -655,11 +655,17 @@ const handleGlobalDeliveryFee = (
 };
 export const getInfoFromZoneData = (zoneData) => {
   let chargeInfo;
-  zoneData?.data?.zone_data?.[0]?.modules?.forEach((moduleItem) => {
-    if (moduleItem?.module_type === getCurrentModuleType()) {
-      chargeInfo = moduleItem;
-    }
-  });
+  if (zoneData?.data?.zone_data?.length > 0) {
+    zoneData?.data?.zone_data?.forEach((item, index) => {
+      if (item?.modules?.length > 0) {
+        item?.modules?.forEach((moduleItem) => {
+          if (moduleItem?.module_type === getCurrentModuleType()) {
+            chargeInfo = moduleItem;
+          }
+        });
+      }
+    });
+  }
   return chargeInfo;
 };
 export const getDeliveryFees = (
@@ -681,9 +687,7 @@ export const getDeliveryFees = (
     origin,
     destination
   );
-  console.log("d", convertedDistance);
   let deliveryFee = convertedDistance * configData?.per_km_shipping_charge;
-
   let totalOrderAmount = cartItemsTotalAmount(cartList);
   //restaurant self delivery system checking
   if (Number.parseInt(storeData?.self_delivery_system) === 1) {
@@ -736,19 +740,6 @@ export const getDeliveryFees = (
             return deliveryFee + extraCharge;
           }
         }
-        //   if (
-        //     (configData?.free_delivery_over !== null &&
-        //       configData?.free_delivery_over > 0 &&
-        //       totalOrderAmount > configData?.free_delivery_over) ||
-        //     orderType === "take_away"
-        //   ) {
-        //     return 0;
-        //   } else {
-        //     return deliveryFee;
-        //   }
-        // } else {
-        //   return chargeInfo?.pivot?.minimum_shipping_charge;
-        // }
       }
     }
   }
