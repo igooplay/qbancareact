@@ -1,5 +1,5 @@
 export const google_client_id =
-  "1000163153346-48ckm2uf7h70hmgn74kg1gq02sval158.apps.googleusercontent.com";
+    "1000163153346-48ckm2uf7h70hmgn74kg1gq02sval158.apps.googleusercontent.com";
 export const fb_app_id = "380903914182154";
 export const appleLoginCredential = {
   appleId: 'com.sixamtech.6amMart',

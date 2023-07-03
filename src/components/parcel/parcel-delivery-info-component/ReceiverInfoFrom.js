@@ -99,7 +99,7 @@ const ReceiverInfoFrom = ({
               justifyContent="space-between"
               alignItems="center"
             >
-              <Typography>{t("Pickup Address")}</Typography>
+              <Typography>{t("Delivery Address")}</Typography>
               <Stack
                 spacing={0.5}
                 alignItems="center"

@@ -25,6 +25,7 @@ import { useStoreRefundRequest } from "../../../../api-manage/hooks/react-query/
 import { toast } from "react-hot-toast";
 import { onErrorResponse } from "../../../../api-manage/api-error-response/ErrorResponses";
 import SingleOrderAttachment from "../singleOrderAttachment";
+import {getCurrentModuleType} from "../../../../helper-functions/getCurrentModuleType";
 
 const OtherOrder = (props) => {
   const { configData, data, refetch } = props;
@@ -38,6 +39,7 @@ const OtherOrder = (props) => {
   useEffect(() => {
     refetchTrackOrder();
   }, []);
+
 
   const { mutate, isLoading: refundIsLoading } = useStoreRefundRequest();
   const formSubmitHandler = (values) => {
@@ -88,6 +90,8 @@ const OtherOrder = (props) => {
                   ) : (
                     <Skeleton width="100px" variant="text" />
                   )}
+
+
                   <Stack direction="row" alignItems="center" spacing={1}>
                     <Typography sx={{ fontWeight: "500" }} align="left">
                       {t("Amount")}:
@@ -184,12 +188,68 @@ const OtherOrder = (props) => {
                     )}
                   </Typography>
                 </Grid>
+                <Grid item  xs={12}>
+                  {
+                      trackOrderData && trackOrderData?.module_type==='food' && trackOrderData?.cutlery &&  <Stack direction="row" alignItems="center" spacing={1}>
+                        <Typography sx={{ fontWeight: "500" }} align="left">
+                          {t("Cutlery")} :
+                        </Typography>
+                        {trackOrderData ? (
+                            <Typography
+                                component="span"
+                                textTransform="capitalize"
+                                align="left"
+                            >
+                              {t('Yes')}
+                            </Typography>
+                        ) : (
+                            <Skeleton width="100px" variant="text" />
+                        )}
+                      </Stack>
+                  }
+                  {
+                      trackOrderData && trackOrderData?.delivery_instruction &&  <Stack direction="row" alignItems="center" spacing={1}>
+                        <Typography sx={{ fontWeight: "500" }} align="left">
+                          {t("Delivery instruction")} :
+                        </Typography>
+                        {trackOrderData ? (
+                            <Typography
+                                component="span"
+                                textTransform="capitalize"
+                                align="left"
+                            >
+                              {t(trackOrderData?.delivery_instruction)}
+                            </Typography>
+                        ) : (
+                            <Skeleton width="100px" variant="text" />
+                        )}
+                      </Stack>
+                  }
+                  {
+                      trackOrderData && trackOrderData?.unavailable_item_note &&  <Stack direction="row" alignItems="center" spacing={1}>
+                        <Typography sx={{ fontWeight: "500" }} align="left">
+                          {t("Unavailable item note")} :
+                        </Typography>
+                        {trackOrderData ? (
+                            <Typography
+                                component="span"
+                                // textTransform="capitalize"
+                                align="left"
+                            >
+                              {t(trackOrderData?.unavailable_item_note)}
+                            </Typography>
+                        ) : (
+                            <Skeleton width="100px" variant="text" />
+                        )}
+                      </Stack>
+                  }
+                </Grid>
                 <RefundDetails
                   trackOrderData={trackOrderData}
                   configData={configData}
                   t={t}
                 />
-                {trackOrderData?.module_type === "pharmacy" &&
+                { !data?.prescription_order &&  trackOrderData?.module_type === "pharmacy" &&
                   trackOrderData?.order_attachment && (
                     <SingleOrderAttachment
                       title="Prescription"
@@ -229,7 +289,7 @@ const OtherOrder = (props) => {
         </Grid>
       </CustomPaperBigCard>
       {data &&
-        typeof data?.[0]?.item_campaign_id === "undefined" &&
+        !data?.[0]?.item_campaign_id  &&
         trackOrderData &&
         trackOrderData?.order_status === "delivered" && (
           <CustomPaperBigCard>

@@ -32,21 +32,19 @@ const SearchSuggestionsBottom = (props) => {
   }
 
   const handleSearchSuccess = (res) => {
-    setSuggestedKeywords(res);
+    if(res?.length>0){
+      setSuggestedKeywords(res);
+    }
+    else{
+     if(list?.length===0){
+       setOpenSearchSuggestions(false);
+     }
+    }
+
   };
 
   const { refetch, isRefetching } =
     useGetSuggestedProducts(handleSearchSuccess);
-
-  // const { refetch, isRefetching } = useQuery(
-  //   [],
-  //   () => ProductsApi.suggestedProducts(),
-  //   {
-  //     onSuccess: handleSearchSuccess,
-  //     enabled: false,
-  //   }
-  // );
-
   useEffect(() => {
     let getItem = JSON.parse(localStorage.getItem("searchedValues"));
     if (getItem && getItem.length > 0) {
@@ -92,77 +90,64 @@ const SearchSuggestionsBottom = (props) => {
     }
   };
   return (
-    <CustomPaper
-      elevation={8}
-      onMouseEnter={() => setOnSearchdiv(true)}
-      onMouseLeave={() => setOnSearchdiv(false)}
-      display={token ? "inherit" : list.length > 0 ? "inherit" : "none"}
-    >
-      <CustomStackFullWidth spacing={1}>
-        {list.length > 0 && (
-          <Stack spacing={1}>
-            <CustomTypography>{t("History")}</CustomTypography>
-            <Stack direction="row" gap="10px" flexWrap="wrap" flexGrow={1}>
-              {list
-                .slice(0, 5)
-                .reverse()
-                .map((item, index) => {
-                  return (
-                    <Chip
-                      key={index}
-                      label={item}
-                      onClick={() => handleSearchHistoryOnClick(item)}
-                      onDelete={() => handleDeleteAble(item)}
-                      sx={{ margin: "0px" }}
-                    />
-                  );
-                })}
-            </Stack>
-          </Stack>
-        )}
-        {suggestedKeywords?.length > 0 && (
-          <Stack spacing={1}>
-            <CustomTypography>{t("Suggestions")}</CustomTypography>
-            <Stack
-              direction="row"
-              // spacing={1}
-              flexWrap="wrap"
-              flexGrow={1}
-              alignItems="center"
-              justifyContent="flex-start"
-              gap="10px"
-            >
-              {suggestedKeywords.map((item, index) => {
-                return (
-                  <Chip
-                    key={index}
-                    label={item.name}
-                    onClick={() => handleSearchSuggestionsOnClick(item.name)}
-                  />
-                );
-              })}
-            </Stack>
-          </Stack>
-        )}
-        {(isRefetching || suggestedKeywords?.length === 0) && token && (
-          <Stack spacing={1}>
-            <Skeleton variant="text" width="120px" />
-            <Stack
-              direction="row"
-              spacing={1}
-              flexWrap="wrap"
-              flexGrow={1}
-              alignItems="center"
-              justifyContent="flex-start"
-            >
-              <Skeleton variant="text" width="120px" height="40px" />
-              <Skeleton variant="text" width="120px" height="40px" />
-              <Skeleton variant="text" width="120px" height="40px" />
-            </Stack>
-          </Stack>
-        )}
-      </CustomStackFullWidth>
-    </CustomPaper>
+    <>
+      {
+        (list?.length > 0 || suggestedKeywords?.length > 0) && <CustomPaper
+            elevation={8}
+            onMouseEnter={() => setOnSearchdiv(true)}
+            onMouseLeave={() => setOnSearchdiv(false)}
+            display={token ? "inherit" : list.length > 0 ? "inherit" : "none"}
+        >
+          <CustomStackFullWidth spacing={1}>
+            {list.length > 0 && (
+                <Stack spacing={1}>
+                  <CustomTypography>{t("History")}</CustomTypography>
+                  <Stack direction="row" gap="10px" flexWrap="wrap" flexGrow={1}>
+                    {list
+                        .slice(0, 5)
+                        .reverse()
+                        .map((item, index) => {
+                          return (
+                              <Chip
+                                  key={index}
+                                  label={item}
+                                  onClick={() => handleSearchHistoryOnClick(item)}
+                                  onDelete={() => handleDeleteAble(item)}
+                                  sx={{ margin: "0px" }}
+                              />
+                          );
+                        })}
+                  </Stack>
+                </Stack>
+            )}
+            {suggestedKeywords?.length > 0 && (
+                <Stack spacing={1}>
+                  <CustomTypography>{t("Suggestions")}</CustomTypography>
+                  <Stack
+                      direction="row"
+                      // spacing={1}
+                      flexWrap="wrap"
+                      flexGrow={1}
+                      alignItems="center"
+                      justifyContent="flex-start"
+                      gap="10px"
+                  >
+                    {suggestedKeywords.map((item, index) => {
+                      return (
+                          <Chip
+                              key={index}
+                              label={item.name}
+                              onClick={() => handleSearchSuggestionsOnClick(item.name)}
+                          />
+                      );
+                    })}
+                  </Stack>
+                </Stack>
+            )}
+          </CustomStackFullWidth>
+        </CustomPaper>
+      }
+    </>
   );
 };
 

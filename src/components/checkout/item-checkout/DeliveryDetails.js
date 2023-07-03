@@ -20,8 +20,17 @@ const DeliveryDetails = (props) => {
     address,
     configData,
     forprescription,
+    setDeliveryTip,
   } = props;
   const { t } = useTranslation();
+
+  const handleOrderType = (value)=>{
+    if(value==='take_away'){
+      setDeliveryTip(0)
+    }
+    setOrderType(value)
+
+  }
   return (
     <CustomPaperBigCard>
       <DeliveryTitle>{t("DELIVERY DETAILS")}</DeliveryTitle>
@@ -31,18 +40,18 @@ const DeliveryDetails = (props) => {
         </DeliveryCaption>
         {storeData && (
           <RadioGroup
-            defaultValue="delivery"
+            value={orderType}
             row
-            onChange={(e) => setOrderType(e.target.value)}
+            onChange={(e) => handleOrderType?.(e.target.value)}
           >
-            {storeData?.delivery && (
+            {storeData?.delivery && configData?.home_delivery_status===1 && (
               <FormControlLabel
                 value="delivery"
                 control={<Radio />}
                 label={t("Home Delivery")}
               />
             )}
-            {storeData?.take_away && forprescription !== "true" && (
+            {storeData?.take_away && configData?.takeaway_status===1 && forprescription !== "true" && (
               <FormControlLabel
                 value="take_away"
                 control={<Radio />}

@@ -4,12 +4,12 @@ export const getAmountWithSign = (amount) => {
   const stores = store?.getState();
   const { configData } = stores?.configData;
   let newAmount = ((amount * 100) / 100).toFixed(
-    Number.parseInt(configData?.digit_after_decimal_point)
+      Number.parseInt(configData?.digit_after_decimal_point)
   );
-  if (configData?.currency_symbol_direction === "left") {
-    return `${configData?.currency_symbol}${newAmount}`;
-  } else if (configData?.currency_symbol_direction === "right") {
-    return `${newAmount}${configData?.currency_symbol}`;
+  if (configData?.currency_symbol_direction === 'left') {
+    return configData?.currency_symbol + newAmount;
+  } else if (configData?.currency_symbol_direction === 'right') {
+    return newAmount + configData?.currency_symbol;
   }
   return amount;
 };

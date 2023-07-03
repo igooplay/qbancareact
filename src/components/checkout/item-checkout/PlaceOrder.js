@@ -20,7 +20,7 @@ import { CustomTypography } from "../../landing-page/hero-section/HeroSection.st
 import Link from "next/link";
 
 const PlaceOrder = (props) => {
-  const { placeOrder, orderLoading, zoneData } = props;
+  const { placeOrder, orderLoading, zoneData, orderType } = props;
   const { t } = useTranslation();
   const [checked, setChecked] = useState(false);
   const handleChange = (e) => {

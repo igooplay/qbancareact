@@ -171,9 +171,16 @@ const Order = (props) => {
               <CustomFormatedDateTime date={order?.created_at} />
             )}
           </DateTypography>
-          <OrderAmountTypography>
-            {t("Order Amount")}:{getAmountWithSign(order?.order_amount)}
-          </OrderAmountTypography>
+          <Stack direction='row' alignItems='center' spacing={.5}>
+            <OrderAmountTypography>
+              {t("Order Amount")} :
+            </OrderAmountTypography>
+            <OrderAmountTypography>
+              {getAmountWithSign(order?.order_amount)}
+            </OrderAmountTypography>
+
+          </Stack>
+
           <CustomStackFullWidth
             alignItems="center"
             spacing={1}

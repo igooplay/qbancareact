@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import {
   getMessaging,
   getToken,
@@ -7,15 +7,15 @@ import {
 } from "firebase/messaging";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCc9xWmBq8bx7pJbulmyOSXcUNI7xDlRUI",
-  authDomain: "voubedelivery.firebaseapp.com",
-  projectId: "voubedelivery",
-  storageBucket: "voubedelivery.appspot.com",
-  messagingSenderId: "528852790709",
-  appId: "1:528852790709:web:130f60a3248d7d69bc3dfc",
-  measurementId: "G-F6BQL92T9M"
+  apiKey: "AIzaSyDFN-73p8zKVZbA0i5DtO215XzAb-xuGSE",
+  authDomain: "ammart-8885e.firebaseapp.com",
+  projectId: "ammart-8885e",
+  storageBucket: "ammart-8885e.appspot.com",
+  messagingSenderId: "1000163153346",
+  appId: "1:1000163153346:web:4f702a4b5adbd5c906b25b",
+  measurementId: "G-L1GNL2YV61",
 };
-const firebaseApp = initializeApp(firebaseConfig);
+const firebaseApp = !getApps().length ? initializeApp(firebaseConfig) : getApp()
 const messaging = (async () => {
   try {
     const isSupportedBrowser = await isSupported();
@@ -32,7 +32,7 @@ const messaging = (async () => {
 export const fetchToken = async (setTokenFound, setFcmToken) => {
   return getToken(await messaging, {
     vapidKey:
-      "BOafs51MmDIomDbBlXrEdpFXJQ_-fzWggglK9OEro9gj1cbMfZOIRpHKIiNErt54B3w6zXeru3Ls45fILn2y5Ko",
+        "BOafs51MmDIomDbBlXrEdpFXJQ_-fzWggglK9OEro9gj1cbMfZOIRpHKIiNErt54B3w6zXeru3Ls45fILn2y5Ko",
   })
     .then((currentToken) => {
       if (currentToken) {
